@@ -1,0 +1,10 @@
+   :man -c "help [<OPTIONS>] [<partial egg statement>]" "
+OPTIONS:
+   -a|--arg <value>           Description [default: ]
+
+DESCRIPTION:
+   Description here
+
+EXAMPLES:
+   Example here                     : comment here
+" | :highlight

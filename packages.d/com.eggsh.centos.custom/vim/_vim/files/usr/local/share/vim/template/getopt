@@ -1,0 +1,16 @@
+   local -r OPTIONS=$(getopt -o fa:o:: -l "flag,arg:,optionalarg::" -n "${FUNCNAME[0]}" -- "$@")
+   eval set -- "$OPTIONS"
+
+   local Flag="DefaultValue"
+   local Arg="DefaultValue"
+   local OptionalArg="DefaultValue"
+   local OptionalArgDefault="DefaultValue"
+
+   while true ; do
+      case "$1" in
+      -f|--flag)        Flag="SetValue"; shift;;
+      -a|--arg)         Arg="$2"; shift 2;;
+      -o|--optionalarg) OptionalArg="${2:-$OptionalArgDefault}"; shift 2;;
+      --)               shift; break;;
+      esac
+   done

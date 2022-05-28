@@ -1,0 +1,19 @@
+   :getopts_init \
+      -o "a:f" \
+      -l "arg:,flag" \
+      -v Options -- "$@"
+
+   local OptChar Arg
+   while :getopts_next OptChar; do
+      case "$OptChar" in
+      -) case "$OPTARG" in
+         arg)     :getopts_set Arg;;
+         flag)    ;;
+
+         *)       :getopts_skip; break;;
+         esac;;
+
+      *) :getopts_redirect "$OptChar" || break;;
+      esac
+   done
+   :getopts_done
